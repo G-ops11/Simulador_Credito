@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Crédito UTVT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <section class="header">
+            <h1>Universidad Tecnológica del Valle de Toluca</h1>
+            <h2>Simulador de Crédito Personal</h2>
+            <p>Calcula el monto a financiar, mensualidades y tabla de amortización.</p>
+        </section>
+
+        <section class="contenido">
+
+            <article class="izquierda">
+
+                <h3>Información del crédito</h3>
+
+                <div class="campo">
+                    <label for="nombre">Cliente:</label>
+                    <input 
+                        type="text" 
+                        id="nombre" 
+                        class="input-amarillo" 
+                        placeholder="Nombre completo">
+                </div>
+
+                <div class="campo">
+                    <label for="montoAutorizado">Monto aprobado:</label>
+                    <input 
+                        type="number" 
+                        id="montoAutorizado" 
+                        class="input-amarillo" 
+                        placeholder="Cantidad autorizada" 
+                        step="1000">
+                </div>
+
+                <div class="campo">
+                    <label for="comisionPorcentaje">Comisión de apertura con IVA:</label>
+
+                    <div class="comision-group">
+                        <input 
+                            type="number" 
+                            id="comisionPorcentaje" 
+                            class="input-amarillo" 
+                            placeholder="%" 
+                            step="0.1"
+                            style="width: 80px;">
+                        <span>%</span>
+                        <span id="comisionMonto" class="monto-comision">$0.00</span>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label>Total del financiamiento:</label>
+                    <span id="totalFinanciar" class="valor-destacado">$0.00</span>
+                </div>
+
+                <div class="campo">
+                    <label for="plazo">Tiempo del crédito:</label>
+                    <select id="plazo" class="input-amarillo">
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="12">12 meses</option>
+                        <option value="24">24 meses</option>
+                        <option value="36">36 meses</option>
+                        <option value="48">48 meses</option>
+                        <option value="60">60 meses</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="tasa">Interés anual:</label>
+                    <input 
+                        type="number" 
+                        id="tasa" 
+                        class="input-amarillo" 
+                        placeholder="Ejemplo: 25" 
+                        step="0.1">
+                    <span>%</span>
+                </div>
+
+                <div class="campo">
+                    <label for="cat">CAT:</label>
+                    <input 
+                        type="number" 
+                        id="cat" 
+                        class="input-amarillo" 
+                        placeholder="Ejemplo: 29.0" 
+                        step="0.1"
+                        style="width: 120px;">
+                    <span>%</span>
+                </div>
+
+                <div class="campo">
+                    <label>Pago por cada mil pesos:</label>
+                    <span id="pagoPorMil" class="valor-destacado">$0.00</span>
+                </div>
+
+            </article>
+
+            <aside class="derecha">
+
+                <div class="botones">
+                    <button id="btn-cotizar">Generar cotización</button>
+                    <button id="btn-limpiar" class="btn-limpiar">Borrar datos</button>
+                </div>
+
+                <div class="info-notas">
+                    <h3>Indicaciones</h3>
+
+                    <ul>
+                        <li>Completa los campos solicitados.</li>
+                        <li>Selecciona el plazo del crédito.</li>
+                        <li>Ingresa la tasa de interés correspondiente.</li>
+                        <li>La información calculada es estimada.</li>
+                        <li>Los pagos anticipados pueden modificarse en la tabla.</li>
+                    </ul>
+                </div>
+
+            </aside>
+
+        </section>
+
+        <section class="tabla-section">
+
+            <h3>Tabla de amortización</h3>
+
+            <button id="btn-ver-tabla" class="btn-tabla">
+                Mostrar tabla de amortización
+            </button>
+
+            <div id="tabla-container" style="display: none;">
+
+                <table id="tabla-amortizacion" border="1">
+                    <thead>
+                        <tr>
+                            <th>No. Mes</th>
+                            <th>Capital pendiente</th>
+                            <th>Interés ordinario</th>
+                            <th>Pago fijo</th>
+                            <th>IVA del interés</th>
+                            <th>Total mensual</th>
+                            <th>Pago anticipado</th>
+                        </tr>
+                    </thead>
+
+                    <tbody></tbody>
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
